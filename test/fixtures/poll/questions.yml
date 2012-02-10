@@ -1,0 +1,5 @@
+default:
+  question: Default Question
+  options:
+    1: Option A
+    2: Option B

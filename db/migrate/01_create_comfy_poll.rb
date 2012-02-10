@@ -8,12 +8,12 @@ class CreateComfyPoll < ActiveRecord::Migration
     end
     
     create_table :poll_answers do |t|
-      t.integer :poll_id,   :null => false
-      t.integer :option_id, :null => false
+      t.integer :question_id, :null => false
+      t.integer :option_id,   :null => false
       t.string :other
       t.timestamps
     end
-    add_index :poll_answers, [:poll_id, :option_id]
+    add_index :poll_answers, [:question_id, :option_id]
   end
   
   def self.down
