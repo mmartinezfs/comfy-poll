@@ -10,7 +10,7 @@ begin
     gem.name        = 'comfy_poll'
     gem.homepage    = 'http://github.com/comfy/comfy-poll'
     gem.license     = 'MIT'
-    gem.summary     = 'ComfyGallery is a poll engine for Rails 3.1 apps (and ComfortableMexicanSofa)'
+    gem.summary     = 'ComfyPoll is a poll engine for Rails 3.1 apps (and ComfortableMexicanSofa)'
     gem.description = ''
     gem.email       = 'oleg@twg.ca'
     gem.authors     = ['Oleg Khabarov', 'The Working Group Inc.']
