@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end unless ComfyPoll.config.admin_route_prefix.blank?
   
   namespace :poll do
-    resources :answers, :only => [:show, :create]
+    resources :questions, :only => [] do
+      resources :answers, :only => [:index, :create]
+    end
   end
   
 end
