@@ -1,0 +1,3 @@
+class Admin::Poll::BaseController < ComfyPoll.config.admin_controller.to_s.constantize
+  # ...
+end
