@@ -3,7 +3,10 @@ require File.expand_path('../../../test_helper', File.dirname(__FILE__))
 class Admin::Poll::QuestionsControllerTest < ActionController::TestCase
   
   def test_get_index
-    
+    get :index
+    assert_response :success
+    assert_template :index
+    assert assigns(:questions)
   end
   
   def test_get_show
