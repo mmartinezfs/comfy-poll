@@ -9,7 +9,10 @@ class Poll::Question < ActiveRecord::Base
     :dependent => :destroy
     
   # -- Validations ----------------------------------------------------------
-  validates :title, :identifier, :content, :options,
+  validates :label, :identifier, :content, :options,
     :presence => true
+    
+  # -- Scopes ---------------------------------------------------------------
+  default_scope order('poll_questions.created_at DESC')
   
 end

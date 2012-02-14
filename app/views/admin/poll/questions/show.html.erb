@@ -1,0 +1,16 @@
+<h1> Poll Question: <%= @question.label %></h1>
+
+<%= simple_format @question.content %>
+
+<table class='formatted'>
+  <% @question.options.each do |k, v| %>
+    <tr>
+      <td>
+        <%= v %>
+      </td>
+      <td class='main'>
+        <%= @question.answers.for_option(k).count %>
+      </td>
+    </tr>
+  <% end %>
+</table>

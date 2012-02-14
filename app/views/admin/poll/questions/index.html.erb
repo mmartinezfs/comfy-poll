@@ -11,15 +11,15 @@
   <% @questions.each do |question| %>
     <tr>
       <td>
-        
+        <%= question.label %>
       </td>
       <td class='main'>
-        <%= debug question %>
+        <%= question.content.truncate(100) %>
       </td>
-      <td>
-        <%= link_to 'Results', '' %>
-        <%= link_to 'Edit', '' %>
-        <%= link_to 'Delete', '', :method => :delete, :confirm => 'Are you sure?' %>
+      <td class='action_links'>
+        <%= link_to 'Results', admin_poll_question_path(question) %>
+        <%= link_to 'Edit', edit_admin_poll_question_path(question) %>
+        <%= link_to 'Delete', admin_poll_question_path(question), :method => :delete, :confirm => 'Are you sure?' %>
       </td>
     </tr>
   <% end %>

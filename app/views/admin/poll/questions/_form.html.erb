@@ -1,4 +1,6 @@
-<%= form.text_area :question, :class => 'short' %>
+<%= form.text_field :label, :id => (@question.new_record?? 'slugify' : nil) %>
+<%= form.text_field :identifier, :id => 'slug' %>
+<%= form.text_area :content, :class => 'short' %>
 
 <%= form.simple_field 'Options' do %>
   <% (0..10).each do |i| %>
