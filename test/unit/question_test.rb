@@ -12,7 +12,7 @@ class QuestionTest < ActiveSupport::TestCase
   def test_validations
     question = Poll::Question.new
     assert question.invalid?
-    assert_has_errors_on question, [:question, :options]
+    assert_has_errors_on question, [:title, :identifier, :content, :options]
   end
   
   def test_creation
@@ -22,8 +22,10 @@ class QuestionTest < ActiveSupport::TestCase
         2 => 'Test Option 2'
       }
       question = Poll::Question.create!(
-        :question => 'Test Poll',
-        :options  => options
+        :title      => 'Test',
+        :identifier => 'test',
+        :content    => 'Test Poll',
+        :options    => options
       )
       question.reload
       assert_equal options, question.options

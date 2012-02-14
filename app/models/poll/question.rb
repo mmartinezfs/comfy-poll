@@ -9,7 +9,7 @@ class Poll::Question < ActiveRecord::Base
     :dependent => :destroy
     
   # -- Validations ----------------------------------------------------------
-  validates :question, :options,
+  validates :title, :identifier, :content, :options,
     :presence => true
   
 end

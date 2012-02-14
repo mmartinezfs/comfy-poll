@@ -1,10 +1,10 @@
 class Admin::Poll::QuestionsController < Admin::Poll::BaseController
   
-  before_filter :build_question, :only => [:new, :create]
-  before_filter :load_question,  :only => [:show, :edit, :update, :destroy]
+  before_filter :build_question,  :only => [:new, :create]
+  before_filter :load_question,   :only => [:show, :edit, :update, :destroy]
   
   def index
-    @questions = Poll::Question.all
+    @questions = ::Poll::Question.all
   end
   
   def show
@@ -20,12 +20,7 @@ class Admin::Poll::QuestionsController < Admin::Poll::BaseController
   end
   
   def create
-    options = { }
-    (params[:question][:options] || []).each_with_index do |o, i|
-      options[i] = o
-    end
-    options.reject!{|k, v| v.blank?}
-    @question.options = options
+    process_options
     @question.save!
     flash[:notice] = 'Poll created'
     redirect_to :action => :index
@@ -35,7 +30,9 @@ class Admin::Poll::QuestionsController < Admin::Poll::BaseController
   end
   
   def update
-    @question.update_attributes!(params[:question])
+    @question.attributes = params[:question]
+    process_options
+    @question.save!
     flash[:notice] = 'Poll updated'
     redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
@@ -52,14 +49,22 @@ class Admin::Poll::QuestionsController < Admin::Poll::BaseController
 protected
   
   def build_question
-    @question = Poll::Question.new(params[:question])
+    @question = ::Poll::Question.new(params[:question])
   end
   
   def load_question
-    @question = Poll::Question.find(params[:id])
+    @question = ::Poll::Question.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'Poll not found'
     redirect_to :action => :index
+  end
+  
+  def process_options
+    options = { }
+    (params[:question][:options] || []).reject(&:blank?).each_with_index do |o, i|
+      options[i] = o
+    end
+    @question.options = options
   end
   
 end

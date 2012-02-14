@@ -1,0 +1,5 @@
+<h1>Editing Poll</h1>
+
+<%= comfy_form_for @question, :as => :question, :url => {:action => :update} do |form| %>
+  <%= render :partial => form %>
+<% end %>

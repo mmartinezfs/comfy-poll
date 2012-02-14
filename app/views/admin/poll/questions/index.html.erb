@@ -1,0 +1,26 @@
+<%= link_to 'Create New Poll', new_admin_poll_question_path, :class => 'big button' %>
+
+<h1> Poll Questions </h1>
+
+<table class='formatted'>
+  <tr>
+    <th>Title</th>
+    <th>Question</th>
+    <th></th>
+  </tr>
+  <% @questions.each do |question| %>
+    <tr>
+      <td>
+        
+      </td>
+      <td class='main'>
+        <%= debug question %>
+      </td>
+      <td>
+        <%= link_to 'Results', '' %>
+        <%= link_to 'Edit', '' %>
+        <%= link_to 'Delete', '', :method => :delete, :confirm => 'Are you sure?' %>
+      </td>
+    </tr>
+  <% end %>
+</table>

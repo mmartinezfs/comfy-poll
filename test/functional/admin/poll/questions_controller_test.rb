@@ -42,8 +42,10 @@ class Admin::Poll::QuestionsControllerTest < ActionController::TestCase
   def test_creation
     assert_difference 'Poll::Question.count' do
       post :create, :question => {
-        :question => 'New Question',
-        :options  => ['Test Option 1', 'Test Option 2']
+        :title      => 'Test',
+        :identifier => 'test',
+        :content    => 'Test Question',
+        :options    => ['Test Option 1', 'Test Option 2']
       }
       assert_response :redirect
       assert_redirected_to :action => :index
@@ -63,27 +65,27 @@ class Admin::Poll::QuestionsControllerTest < ActionController::TestCase
   def test_update
     question = poll_questions(:default)
     put :update, :id => question, :question => {
-      :question => 'Updated Question'
+      :content => 'Updated Question'
     }
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Poll updated', flash[:notice]
     
     question.reload
-    assert_equal 'Updated Question', question.question
+    assert_equal 'Updated Question', question.content
   end
   
   def test_update_failure
     question = poll_questions(:default)
     put :update, :id => question, :question => {
-      :question => ''
+      :content => ''
     }
     assert_response :success
     assert_template :edit
     assert_equal 'Failed to update Poll', flash[:error]
     
     question.reload
-    assert_not_equal '', question.question
+    assert_not_equal '', question.content
   end
   
   def test_destroy

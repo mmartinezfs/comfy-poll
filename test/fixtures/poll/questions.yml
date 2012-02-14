@@ -1,5 +1,7 @@
 default:
-  question: Default Question
+  title: Default Poll
+  identifier: default-poll
+  content: Default Question
   options:
     1: Option A
     2: Option B
