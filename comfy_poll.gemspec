@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Oleg Khabarov", "The Working Group Inc."]
-  s.date = "2012-02-13"
+  s.date = "2012-03-06"
   s.description = ""
   s.email = "oleg@twg.ca"
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "app/models/poll/answer.rb",
     "app/models/poll/question.rb",
     "app/views/admin/poll/_navigation.html.erb",
+    "app/views/admin/poll/questions/_form.html.erb",
     "app/views/admin/poll/questions/edit.html.erb",
     "app/views/admin/poll/questions/index.html.erb",
     "app/views/admin/poll/questions/new.html.erb",
@@ -48,6 +49,7 @@ Gem::Specification.new do |s|
     "config/environments/development.rb",
     "config/environments/test.rb",
     "config/initializers/comfy_poll.rb",
+    "config/initializers/secret_token.rb",
     "config/locales/en.yml",
     "config/routes.rb",
     "db/migrate/01_create_comfy_poll.rb",
@@ -60,12 +62,6 @@ Gem::Specification.new do |s|
     "lib/generators/comfy/poll/poll_generator.rb",
     "lib/tasks/.gitkeep",
     "log/.gitkeep",
-    "public/404.html",
-    "public/422.html",
-    "public/500.html",
-    "public/favicon.ico",
-    "public/index.html",
-    "public/robots.txt",
     "script/rails",
     "test/fixtures/.gitkeep",
     "test/fixtures/poll/answers.yml",
