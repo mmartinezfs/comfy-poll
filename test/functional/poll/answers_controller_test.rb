@@ -14,11 +14,13 @@ class Poll::AnswersControllerTest < ActionController::TestCase
   end
   
   def test_creation
+    question = poll_questions(:default)
     assert_difference 'Poll::Answer.count' do
-      xhr :post, :create, :question_id => poll_questions(:default), :answer => {
+      xhr :post, :create, :question_id => question, :answer => {
         :option_id  => '1'
       }
       assert_response :success
+      assert_equal [question.id], session[:comfy_poll_answered_ids]
     end
   end
   
@@ -26,6 +28,7 @@ class Poll::AnswersControllerTest < ActionController::TestCase
     assert_no_difference 'Poll::Answer.count' do
       xhr :post, :create, :question_id => poll_questions(:default), :answer => { }
       assert_response 422
+      assert_equal nil, session[:comfy_poll_answered_ids]
     end
   end
   

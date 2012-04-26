@@ -9,6 +9,8 @@ class Poll::AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(params[:answer])
     @answer.save!
+    session[:comfy_poll_answered_ids] ||= []
+    session[:comfy_poll_answered_ids] << @question.id
   rescue ActiveRecord::RecordInvalid
     render :nothing => true, :status => 422
   end
