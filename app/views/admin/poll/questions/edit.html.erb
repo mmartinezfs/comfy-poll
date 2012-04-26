@@ -1,5 +1,5 @@
 <h1>Editing Poll</h1>
 
-<%= comfy_form_for @question, :as => :question, :url => {:action => :update} do |form| %>
+<%= form_for @question, :as => :question, :url => {:action => :update}, :builder => ComfyPoll.config.form_builder.constantize do |form| %>
   <%= render :partial => form %>
 <% end %>

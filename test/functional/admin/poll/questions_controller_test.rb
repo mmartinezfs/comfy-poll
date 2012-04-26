@@ -42,7 +42,7 @@ class Admin::Poll::QuestionsControllerTest < ActionController::TestCase
   def test_creation
     assert_difference 'Poll::Question.count' do
       post :create, :question => {
-        :title      => 'Test',
+        :label      => 'Test',
         :identifier => 'test',
         :content    => 'Test Question',
         :options    => ['Test Option 1', 'Test Option 2']
@@ -65,7 +65,8 @@ class Admin::Poll::QuestionsControllerTest < ActionController::TestCase
   def test_update
     question = poll_questions(:default)
     put :update, :id => question, :question => {
-      :content => 'Updated Question'
+      :content => 'Updated Question',
+      :options    => ['Test Option 1', 'Test Option 2']
     }
     assert_response :redirect
     assert_redirected_to :action => :index

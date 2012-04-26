@@ -2,10 +2,18 @@
 <%= form.text_field :identifier, :id => 'slug' %>
 <%= form.text_area :content, :class => 'short' %>
 
-<%= form.simple_field 'Options' do %>
+<% options = capture do %>
   <% (0..10).each do |i| %>
     <%= text_field_tag 'question[options][]', @question.options[i], :id => nil %>
   <% end %>
+<% end %>
+
+<% if form.respond_to?(:simple_field) %>
+  <%= form.simple_field 'Options' do %>
+    = options
+  <% end %>
+<% else %>
+  = options
 <% end %>
 
 <%= form.submit @question.new_record?? 'Create Poll' : 'Update Poll' %>

@@ -1,5 +1,5 @@
 default:
-  title: Default Poll
+  label: Default Poll
   identifier: default-poll
   content: Default Question
   options:
