@@ -10,10 +10,10 @@
 
 <% if form.respond_to?(:simple_field) %>
   <%= form.simple_field 'Options' do %>
-    = options
+    <%= options %>
   <% end %>
 <% else %>
-  = options
+  <%= options %>
 <% end %>
 
 <%= form.submit @question.new_record?? 'Create Poll' : 'Update Poll' %>
